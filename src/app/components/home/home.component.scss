@@ -38,9 +38,10 @@
   box-shadow: 2px 1.5px 5px 0px rgb(101 50 116 / 22%);
   transition-duration: 0.3s;
   cursor: pointer;
+
   &:hover {
     box-shadow: 4px 3px 11px 6px rgb(101 50 116 / 46%);
-    transform: translateY(-3px);
+    transform: translateY(-10px);
   }
   &-thumbnail {
     position: absolute;
@@ -50,25 +51,31 @@
     margin: 0 auto;
     height: 172px;
     width: 100%;
+    
+  }
+  &-thumbnail:hover {
+    filter: blur(0.9px);
+    transition-duration: 0.3s;
   }
   &-thumb-container {
     background-color: #000;
     position: relative;
     height: 172px;
     color: #fff;
-    text-align: center;
+    text-align: center
+    
   }
   &-name {
     color: #fff;
     font-weight: 700;
     font-size: 22px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
   }
   &-description {
-    padding: 20px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -76,10 +83,18 @@
   }
   &-platforms {
     display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
   }
 
   &-platform {
     width: 20px;
     margin-right: 10px;
+  }
+  &-score{
+    display: flex;
+    justify-content: end;
+    color: white;
+    text-transform: uppercase;
   }
 }
