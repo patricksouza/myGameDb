@@ -11,3 +11,7 @@ ng g c nome_do_componente
 
 * Para gerar um novo serviço, use:
 ng g s http
+
+* Para gerar um model, use:
+
+ng g c nome_do_model --type=model
