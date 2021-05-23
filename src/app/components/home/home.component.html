@@ -14,23 +14,30 @@
 </div>
 
 <div class="games">
-  <div class="game">
-    <div class="game-thumb-container">
-      <img
-        class="game-thumbnail"
-        src="https://via.placeholder.com/350"
-        alt="thumbnail"
-      />
-    </div>
-    <div class="game-description">
-      <p class="game-name">Name</p>
-      <div class="game-plataforms">
+  <ng-container *ngFor="let value of valuesList">
+    <div class="game">
+      <div class="game-thumb-container">
         <img
-          class="game-plataform"
-          src="https://via.placeholder.com/40"
-          alt="slug"
+          class="game-thumbnail"
+          *ngIf="value.background_image"
+          src="{{ value.background_image }}"
+          alt="thumbnail"
         />
+        <p *ngIf="!value.background_image">No image</p>
+      </div>
+      <div class="game-description">
+        <p class="game-name">{{ value.name }}</p>
+        <div class="game-platforms">
+          <img
+            *ngFor="let supPlatform of value.parent_platforms"
+            class="game-platform"
+            src="assets/images/platforms/{{ supPlatform.platform.slug }}.svg"
+            alt="{{ supPlatform.platform.slug }}"
+          />
+        </div>
+        <br>
+        <p class="game-score">Score: {{value.rating}}</p>
       </div>
     </div>
-  </div>
+  </ng-container>
 </div>
