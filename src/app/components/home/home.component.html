@@ -31,12 +31,13 @@
           <img
             *ngFor="let supPlatform of value.parent_platforms"
             class="game-platform"
+            title="{{ supPlatform.platform.name }}"
             src="assets/images/platforms/{{ supPlatform.platform.slug }}.svg"
             alt="{{ supPlatform.platform.slug }}"
           />
         </div>
-        <br>
-        <p class="game-score">Score: {{value.rating}}</p>
+        <br />
+        <p class="game-score">Score: {{ value.rating }}</p>
       </div>
     </div>
   </ng-container>

@@ -54,8 +54,9 @@
     
   }
   &-thumbnail:hover {
-    filter: blur(0.9px);
+    //filter: blur(0.9px);
     transition-duration: 0.3s;
+    transform: scale(1.15);
   }
   &-thumb-container {
     background-color: #000;
