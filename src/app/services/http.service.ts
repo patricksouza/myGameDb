@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment as env } from 'environments/environment';
 import { APIResponse, Data } from 'app/models/data.model';
 
@@ -23,5 +24,17 @@ export class HttpService {
     return this.http.get<APIResponse<Data>>(`${env.BASE_URL}/games`, {
       params: params,
     });
+  }
+  getValueDetails(id: string): Observable<Data> {
+    const valueInfoRequest = this.http.get(`${env.BASE_URL}/games/${id}`);
+    return forkJoin({
+      valueInfoRequest,
+    }).pipe(
+      map((response: any) => {
+        return {
+          ...response['valueInfoRequest'],
+        };
+      })
+    );
   }
 }
