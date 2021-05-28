@@ -1,7 +1,11 @@
 <div class="filters">
   <mat-form-field>
     <mat-label>Sort: </mat-label>
-    <mat-select panelClass="sort-select" [(ngModel)]="sort">
+    <mat-select
+      panelClass="sort-select"
+      [(ngModel)]="sort"
+      (selectionChange)="searchValues(sort!)"
+    >
       <mat-option value="name">Name</mat-option>
       <mat-option value="-reeleased">Released</mat-option>
       <mat-option value="-added">Added</mat-option>
@@ -15,7 +19,7 @@
 
 <div class="games">
   <ng-container *ngFor="let value of valuesList">
-    <div class="game">
+    <div class="game" (click)="openValueDetails(value.id)">
       <div class="game-thumb-container">
         <img
           class="game-thumbnail"
@@ -37,7 +41,9 @@
           />
         </div>
         <br />
-        <p class="game-score">Score: {{ value.rating }}</p>
+        <p class="game-score">
+          Score: {{ value.rating > 0 ? value.rating : "N/A" }}
+        </p>
       </div>
     </div>
   </ng-container>
