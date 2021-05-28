@@ -1,6 +1,8 @@
 export interface Data {
+  id: string;
   rating: number;
   background_image: string;
+  title: string;
   name: string;
   released: string;
   metacritic_url: string;
@@ -25,7 +27,7 @@ interface Genre {
 interface ParentPlatform {
   platform: {
     name: string;
-    slug:string;
+    slug: string;
   };
 }
 
