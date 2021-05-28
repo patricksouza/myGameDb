@@ -1,0 +1,42 @@
+<div class="details">
+  <div class="game-banner">
+    <img
+      class="gamer-banner-img"
+      src="{{ value.background_image }}"
+      alt="background image"
+    />
+  </div>
+  <div class="game-content">
+    <div class="details-wrapper">
+      <div class="game-header">
+        <h1 class="game-header-title">{{ value.name }}</h1>
+        <h2 class="game-header-release-date">
+          Release: {{ value.released | date }}
+        </h2>
+        <p class="game-header-genres">
+          <span *ngFor="let genre of value.genres; let last = last"
+            >{{ genre.name }}<span *ngIf="!last">, </span></span
+          >
+        </p>
+        <div class="game-gauge">
+          <mwl-gauge
+            class="two"
+            [max]="100"
+            [dialStartAngle]="180"
+            [dialEndAngle]="0"
+            [value]="valueRating"
+            [color]="getColor"
+            [animationDuration]="2"
+          >
+          </mwl-gauge>
+          <a
+            class="game-gauge-label"
+            target="_blank"
+            href="{{ value.metacritic_url }}"
+            >Metacritic</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
