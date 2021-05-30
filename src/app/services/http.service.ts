@@ -13,15 +13,17 @@ export class HttpService {
 
   getValuesList(
     ordering: string,
-    search?: string
+    search?: string,
+    searchType?: string
   ): Observable<APIResponse<Data>> {
+
     let params = new HttpParams().set('ordering', ordering);
     //if a search was requested do this
     if (search) {
       params = new HttpParams().set('ordering', ordering).set('search', search);
     }
 
-    return this.http.get<APIResponse<Data>>(`${env.BASE_URL}/games`, {
+    return this.http.get<APIResponse<Data>>(`${env.BASE_URL}/${searchType}`, {
       params: params,
     });
   }

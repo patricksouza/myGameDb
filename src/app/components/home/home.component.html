@@ -16,7 +16,13 @@
     </mat-select>
   </mat-form-field>
 </div>
-
+<div class="genres">
+  <ng-container *ngFor="let genre of valuesListGenres">
+    <div class="genres-container">
+      <a class="genres-types"  role="button" (click)="searchByGenreValues(genre.name)">{{ genre.name }}</a>
+    </div>
+  </ng-container>
+</div>
 <div class="games">
   <ng-container *ngFor="let value of valuesList">
     <div class="game" (click)="openValueDetails(value.id)">
