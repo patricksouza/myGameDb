@@ -3,38 +3,40 @@
   margin: 20px auto;
   position: relative;
 }
-
 .details {
-  ::ng-deep wul-gauge {
+  ::ng-deep mwl-gauge {
     width: 150px;
     height: 150px;
     display: block;
     padding: 10px;
-  }
-  .dial {
-    stroke-width: 10;
-  }
-  .value {
-    stroke-dasharray: none;
-    stroke-width: 13;
-  }
-  .value-text {
-    fill: #fff;
-    font-weight: 700;
-    font-size: 24px;
-  }
-}
 
-.game-gauge {
-  position: absolute;
-  top: 50px;
-  right: 0;
+    .dial {
+      stroke-width: 10;
+    }
 
-  &-label {
-    font-size: 20px;
-    color: #fff;
-    position: relative;
-    bottom: 60px;
+    .value {
+      stroke-dasharray: none;
+      stroke-width: 13;
+    }
+
+    .value-text {
+      fill: #fff;
+      font-weight: 700;
+      font-size: 24px;
+    }
+  }
+
+  .game-gauge {
+    position: absolute;
+    top: 50px;
+    right: 0;
+
+    &-label {
+      font-size: 20px;
+      color: #fff;
+      position: relative;
+      bottom: 60px;
+    }
   }
 }
 

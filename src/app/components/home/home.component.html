@@ -19,7 +19,13 @@
 <div class="genres">
   <ng-container *ngFor="let genre of valuesListGenres">
     <div class="genres-container">
-      <a class="genres-types"  role="button" (click)="searchByGenreValues(genre.name)">{{ genre.name }}</a>
+      <a
+        class="genres-types"
+        role="button"
+        (click)="searchByGenreValues(genre.id)"
+        >{{ genre.name }}</a
+      >
+    
     </div>
   </ng-container>
 </div>

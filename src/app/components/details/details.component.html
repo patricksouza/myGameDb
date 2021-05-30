@@ -25,15 +25,16 @@
             [dialStartAngle]="180"
             [dialEndAngle]="0"
             [value]="valueRating"
+            [animated]="true"
             [color]="getColor"
             [animationDuration]="2"
           >
           </mwl-gauge>
           <a
-            class="game-gauge-label"
-            target="_blank"
-            href="{{ value.metacritic_url }}"
-            >Metacritic</a
+          class="game-gauge-label"
+          target="_blank"
+          href="{{ value.metacritic_url }}"
+          >Metacritic</a
           >
         </div>
       </div>

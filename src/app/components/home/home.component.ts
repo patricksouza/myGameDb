@@ -11,6 +11,7 @@ import { HttpService } from 'app/services/http.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   public sort: string | undefined;
+  public genre: string | undefined;
   public valuesList: Array<Data> = [];
   public valuesListGenres: Array<Data> = [];
   private routeSub!: Subscription;
@@ -30,33 +31,41 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.searchValues('metacrit');
       }
-      this.genreValues();
+      this.getGenreValues();
     });
   }
 
   searchValues(sort: string, search?: string): void {
     this.valueSub = this.httpService
-      .getValuesList(sort, search,'games')
+      .getValuesList(sort, search, 'games')
       .subscribe((values: APIResponse<Data>) => {
         this.valuesList = values.results;
         console.log(this.valuesList);
       });
   }
-  searchByGenreValues(genre:string):void{
+  searchByGenreValues(genre: string): void {
+    let arrayResult: any;
     this.valueSub = this.httpService
-    .getValuesList(genre, '','games')
-    .subscribe((values: APIResponse<Data>) => {
-      this.valuesList = values.results;
-      console.log(this.valuesList);
-    });
+      .getValuesList(genre, 'metacrit', 'genres')
+      .subscribe((values: APIResponse<Data>) => {
+        values.results.findIndex((item, index) => {
+          console.log(item, index, typeof index);
+
+          if (item.id === genre) {
+            arrayResult = values.results;
+            this.valuesList = arrayResult[index].games;
+            console.log(this.valuesList);
+          }
+        });
+      });
   }
 
-  genreValues(): void {
+  getGenreValues(): void {
     this.valueSub = this.httpService
       .getValuesList('', '', 'genres')
       .subscribe((values: APIResponse<Data>) => {
         this.valuesListGenres = values.results;
-        console.log(this.valuesListGenres);
+        //console.log(this.valuesListGenres);
       });
   }
 
